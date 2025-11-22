@@ -1,8 +1,7 @@
-from flask import Flask, request, redirect, render_template_string
+from flask import Flask, request, render_template_string, redirect
 import random
 import string
 import os
-import time
 import threading
 
 app = Flask(__name__)
@@ -35,6 +34,18 @@ def display_banner():
     """
     print(banner)
 
+def get_local_ip():
+    import socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("8.8.8.8", 80))
+        local_ip = s.getsockname()[0]
+    except Exception:
+        local_ip = "127.0.0.1"
+    finally:
+        s.close()
+    return local_ip
+
 def mask_url():
     clear_screen()
     display_banner()
@@ -49,7 +60,8 @@ def mask_url():
         fake_url = 'http://' + fake_url
 
     random_path = generate_random_string()
-    masked_url = f"http://{request.host.split(':')[0]}:5000/{random_path}"
+    local_ip = get_local_ip()
+    masked_url = f"http://{local_ip}:5000/{random_path}"
 
     url_mapping[random_path] = {
         "original": original_url,
