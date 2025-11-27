@@ -89,42 +89,30 @@ def home():
     <title>Loading...</title>
     <style>
         body {
-            font-family: 'Courier New', monospace;
-            background-color: #0f0f0f;
+            font-family: Arial, sans-serif;
+            background-color: white;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #00ff00;
-        }
-        .container {
-            text-align: center;
         }
         .loader {
-            width: 48px;
-            height: 48px;
-            border: 5px solid rgba(0, 255, 0, 0.2);
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
             border-radius: 50%;
-            border-top-color: #00ff00;
+            border-top-color: #333;
             animation: spin 1s ease-in-out infinite;
-            margin: 0 auto 20px;
         }
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        h1 {
-            color: #00ff00;
-            font-size: 18px;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="loader"></div>
-        <h1>Loading...</h1>
-    </div>
+    <div class="loader"></div>
 </body>
 </html>
 ''')
@@ -140,42 +128,30 @@ def fake_page(random_path):
     <meta http-equiv="refresh" content="2; url={url_mapping[random_path]}">
     <style>
         body {{
-            font-family: 'Courier New', monospace;
-            background-color: #0f0f0f;
+            font-family: Arial, sans-serif;
+            background-color: white;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #00ff00;
-        }}
-        .container {{
-            text-align: center;
         }}
         .loader {{
-            width: 48px;
-            height: 48px;
-            border: 5px solid rgba(0, 255, 0, 0.2);
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
             border-radius: 50%;
-            border-top-color: #00ff00;
+            border-top-color: #333;
             animation: spin 1s ease-in-out infinite;
-            margin: 0 auto 20px;
         }}
         @keyframes spin {{
             to {{ transform: rotate(360deg); }}
         }}
-        h1 {{
-            color: #00ff00;
-            font-size: 18px;
-        }}
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="loader"></div>
-        <h1>Loading...</h1>
-    </div>
+    <div class="loader"></div>
 </body>
 </html>
 ''')
