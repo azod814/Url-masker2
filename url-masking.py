@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template_string, make_response, redirect
+from flask import Flask, request, render_template_string, redirect, make_response
 import random
 import string
 import threading
@@ -78,8 +78,8 @@ def mask_url(public_url):
     print(f"\n\033[92m[+]\033[0m Your Public Masked URL: \033[96m{masked_url}\033[0m")
     input("\n\033[92m[+]\033[0m Press Enter to continue...")
 
-@app.route('/unseeding-lorna-parthenocarpically.ngrok-free.dev/<path:random_path>')
-def fake_page(random_path):
+@app.route('/<path:ngrok_domain>/<path:random_path>')
+def fake_page(ngrok_domain, random_path):
     if random_path in url_mapping:
         response = make_response(render_template_string('''
 <!DOCTYPE html>
@@ -109,13 +109,13 @@ def fake_page(random_path):
             to { transform: rotate(360deg); }
         }
     </style>
-    <meta http-equiv="refresh" content="2; url={url_mapping[random_path]}">
+    <meta http-equiv="refresh" content="2; url={{url_mapping[random_path]}}">
 </head>
 <body>
     <div class="loader"></div>
 </body>
 </html>
-'''))
+''', url_mapping=url_mapping))
         return response
     return "URL not found or expired.", 404
 
